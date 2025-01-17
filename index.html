@@ -35,16 +35,15 @@
             border-radius: 5px; /* Optional: Add rounded corners */
             box-shadow: 0px 20px 20px rgba(0, 0, 0, 1); /* Optional: Add a shadow for better visibility */
         }
-        .css_CanoeDataRiverMiles_1 {
+        .css_EPAMileMarkers_3 {
             color: #000000;
-            font-size: 10pt;
+            font-size: 12pt;
             font-family: 'MS Shell Dlg 2', sans-serif;
             text-align: center;
             background-color: rgba(255, 255, 255, 0.8); /* Optional: Add a semi-transparent background */;
             border-radius: 5px; /* Optional: Add rounded corners */
             padding: 0.1em;
         }
-
         </style>
         <title>Cuyahoga River Miles</title>
     </head>
@@ -62,12 +61,13 @@
         <script src="js/rbush.min.js"></script>
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
-        <script src="data/CanoeDataRiverMiles_1.js"></script>
-        <script src="data/CanoeDataNHDFlowlineForRiverMiles_2.js"></script>
+        <script src="data/CuyahogaRiver_1.js"></script>
+        <script src="data/TenthMileMarkers_2.js"></script>
+        <script src="data/EPAMileMarkers_3.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[40.92958389728001,-82.16130284900478],[41.908419525408604,-80.83594807378026]]);
+        }).fitBounds([[41.00705409326967,-81.7018040848826],[41.9217790800007,-81.17823941092239]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -118,62 +118,7 @@
         });
         layer_ESRISatelliteArcGISWorld_Imagery_0;
         map.addLayer(layer_ESRISatelliteArcGISWorld_Imagery_0);
-        function pop_CanoeDataRiverMiles_1(feature, layer) {
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['OBJECTID'] !== null ? autolinker.link(feature.properties['OBJECTID'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['ORIG_FID'] !== null ? autolinker.link(feature.properties['ORIG_FID'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['ORIG_LEN'] !== null ? autolinker.link(feature.properties['ORIG_LEN'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['ORIG_SEQ'] !== null ? autolinker.link(feature.properties['ORIG_SEQ'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Shape_Length'] !== null ? autolinker.link(feature.properties['Shape_Length'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['RiverMile'] !== null ? autolinker.link(feature.properties['RiverMile'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
-            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
-			layer.on('popupopen', function(e) {
-				addClassToPopupIfMedia(content, e.popup);
-			});
-			layer.bindPopup(content, { maxHeight: 400 });
-        }
-
-        function style_CanoeDataRiverMiles_1_0() {
-            return {
-                fill: false,
-                stroke: false,
-                interactive: false
-            }
-        }
-        map.createPane('pane_CanoeDataRiverMiles_1');
-        map.getPane('pane_CanoeDataRiverMiles_1').style.zIndex = 401;
-        map.getPane('pane_CanoeDataRiverMiles_1').style['mix-blend-mode'] = 'normal';
-        var layer_CanoeDataRiverMiles_1 = new L.geoJson(json_CanoeDataRiverMiles_1, {
-            attribution: '',
-            interactive: false,
-            dataVar: 'json_CanoeDataRiverMiles_1',
-            layerName: 'layer_CanoeDataRiverMiles_1',
-            pane: 'pane_CanoeDataRiverMiles_1',
-            onEachFeature: pop_CanoeDataRiverMiles_1,
-            pointToLayer: function (feature, latlng) {
-                var context = {
-                    feature: feature,
-                    variables: {}
-                };
-                return L.circleMarker(latlng, style_CanoeDataRiverMiles_1_0(feature));
-            },
-        });
-        bounds_group.addLayer(layer_CanoeDataRiverMiles_1);
-        map.addLayer(layer_CanoeDataRiverMiles_1);
-        function pop_CanoeDataNHDFlowlineForRiverMiles_2(feature, layer) {
+        function pop_CuyahogaRiver_1(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['OBJECTID'] !== null ? autolinker.link(feature.properties['OBJECTID'].toLocaleString()) : '') + '</td>\
@@ -189,9 +134,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_CanoeDataNHDFlowlineForRiverMiles_2_0() {
+        function style_CuyahogaRiver_1_0() {
             return {
-                pane: 'pane_CanoeDataNHDFlowlineForRiverMiles_2',
+                pane: 'pane_CuyahogaRiver_1',
                 opacity: 1,
                 color: 'rgba(0,0,255,1.0)',
                 dashArray: '',
@@ -202,43 +147,187 @@
                 interactive: false,
             }
         }
-        map.createPane('pane_CanoeDataNHDFlowlineForRiverMiles_2');
-        map.getPane('pane_CanoeDataNHDFlowlineForRiverMiles_2').style.zIndex = 402;
-        map.getPane('pane_CanoeDataNHDFlowlineForRiverMiles_2').style['mix-blend-mode'] = 'normal';
-        var layer_CanoeDataNHDFlowlineForRiverMiles_2 = new L.geoJson(json_CanoeDataNHDFlowlineForRiverMiles_2, {
+        map.createPane('pane_CuyahogaRiver_1');
+        map.getPane('pane_CuyahogaRiver_1').style.zIndex = 401;
+        map.getPane('pane_CuyahogaRiver_1').style['mix-blend-mode'] = 'normal';
+        var layer_CuyahogaRiver_1 = new L.geoJson(json_CuyahogaRiver_1, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_CanoeDataNHDFlowlineForRiverMiles_2',
-            layerName: 'layer_CanoeDataNHDFlowlineForRiverMiles_2',
-            pane: 'pane_CanoeDataNHDFlowlineForRiverMiles_2',
-            onEachFeature: pop_CanoeDataNHDFlowlineForRiverMiles_2,
-            style: style_CanoeDataNHDFlowlineForRiverMiles_2_0,
+            dataVar: 'json_CuyahogaRiver_1',
+            layerName: 'layer_CuyahogaRiver_1',
+            pane: 'pane_CuyahogaRiver_1',
+            onEachFeature: pop_CuyahogaRiver_1,
+            style: style_CuyahogaRiver_1_0,
         });
-        bounds_group.addLayer(layer_CanoeDataNHDFlowlineForRiverMiles_2);
-        map.addLayer(layer_CanoeDataNHDFlowlineForRiverMiles_2);
+        bounds_group.addLayer(layer_CuyahogaRiver_1);
+        map.addLayer(layer_CuyahogaRiver_1);
+        function pop_TenthMileMarkers_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OBJECTID'] !== null ? autolinker.link(feature.properties['OBJECTID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ORIG_FID'] !== null ? autolinker.link(feature.properties['ORIG_FID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['InLine_FID'] !== null ? autolinker.link(feature.properties['InLine_FID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ORIG_FID_1'] !== null ? autolinker.link(feature.properties['ORIG_FID_1'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ORIG_SEQ'] !== null ? autolinker.link(feature.properties['ORIG_SEQ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Shape_Length'] !== null ? autolinker.link(feature.properties['Shape_Length'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_TenthMileMarkers_2_0() {
+            return {
+              pane: 'pane_TenthMileMarkers_2',
+              radius: 5.0, // Size of the marker
+              opacity: 1, // Opacity of the outline
+              color: 'rgba(255,255,255,1.0)', // Outline color (red in this case)
+              dashArray: '', // Optional: Use for dashed outline
+              lineCap: 'butt', // Style for line ends
+              lineJoin: 'miter', // Style for line joins
+              weight: 1, // Thickness of the outline
+              fill: true, // Enables filling the marker
+              fillOpacity: 1, // Opacity of the fill
+              fillColor: 'rgba(0,0,0,1.0)', // Fill color (black in this case)
+              interactive: false, // Makes the marker non-interactive
+            }
+        }
+        map.createPane('pane_TenthMileMarkers_2');
+        map.getPane('pane_TenthMileMarkers_2').style.zIndex = 402;
+        map.getPane('pane_TenthMileMarkers_2').style['mix-blend-mode'] = 'normal';
+        var layer_TenthMileMarkers_2 = new L.geoJson(json_TenthMileMarkers_2, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_TenthMileMarkers_2',
+            layerName: 'layer_TenthMileMarkers_2',
+            pane: 'pane_TenthMileMarkers_2',
+            onEachFeature: pop_TenthMileMarkers_2,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_TenthMileMarkers_2_0(feature));
+            },
+        });
+
+        bounds_group.addLayer(layer_TenthMileMarkers_2);
+
+        // Function to toggle visibility based on zoom level
+        function toggleTenthMileMarkers() {
+            const currentZoom = map.getZoom();
+            const zoomThreshold = 14; // Adjust as needed
+
+            if (currentZoom >= zoomThreshold) {
+                if (!map.hasLayer(layer_TenthMileMarkers_2)) {
+                    map.addLayer(layer_TenthMileMarkers_2); // Show the layer
+                }
+            } else {
+                if (map.hasLayer(layer_TenthMileMarkers_2)) {
+                    map.removeLayer(layer_TenthMileMarkers_2); // Hide the layer
+                }
+            }
+        }
+
+        // Hide the layer initially (on map load) if below threshold
+        if (map.getZoom() < 14) {
+            map.removeLayer(layer_TenthMileMarkers_2);
+        }
+
+        // Listen for zoom changes and toggle visibility
+        map.on('zoomend', toggleTenthMileMarkers);
+
+        function pop_EPAMileMarkers_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OBJECTID'] !== null ? autolinker.link(feature.properties['OBJECTID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RiverMile'] !== null ? autolinker.link(feature.properties['RiverMile'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NEAR_FID'] !== null ? autolinker.link(feature.properties['NEAR_FID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NEAR_DIST'] !== null ? autolinker.link(feature.properties['NEAR_DIST'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NEAR_X'] !== null ? autolinker.link(feature.properties['NEAR_X'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NEAR_Y'] !== null ? autolinker.link(feature.properties['NEAR_Y'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_EPAMileMarkers_3_0() {
+            return {
+                fill: false,
+                stroke: false,
+                interactive: false
+            }
+        }
+        map.createPane('pane_EPAMileMarkers_3');
+        map.getPane('pane_EPAMileMarkers_3').style.zIndex = 403;
+        map.getPane('pane_EPAMileMarkers_3').style['mix-blend-mode'] = 'normal';
+        var layer_EPAMileMarkers_3 = new L.geoJson(json_EPAMileMarkers_3, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_EPAMileMarkers_3',
+            layerName: 'layer_EPAMileMarkers_3',
+            pane: 'pane_EPAMileMarkers_3',
+            onEachFeature: pop_EPAMileMarkers_3,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_EPAMileMarkers_3_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_EPAMileMarkers_3);
+        map.addLayer(layer_EPAMileMarkers_3);
         setBounds();
         var i = 0;
-        layer_CanoeDataRiverMiles_1.eachLayer(function(layer) {
+        layer_EPAMileMarkers_3.eachLayer(function(layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['RiverMile'] !== null?String('<div>' + layer.feature.properties['RiverMile'] + '</div>'):''), {permanent: true, offset: [0, 0], direction: 'center', className: 'css_CanoeDataRiverMiles_1'});
+            layer.bindTooltip((layer.feature.properties['RiverMile'] !== null?String('<div>' + layer.feature.properties['RiverMile'] + '</div>'):''), {permanent: true, offset: [0, 0], direction: 'center', className: 'css_EPAMileMarkers_3'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
               addLabel(layer, i);
               i++;
         });
-        resetLabels([layer_CanoeDataRiverMiles_1]);
+        resetLabels([layer_EPAMileMarkers_3]);
         map.on("zoomend", function(){
-            resetLabels([layer_CanoeDataRiverMiles_1]);
+            resetLabels([layer_EPAMileMarkers_3]);
         });
         map.on("layeradd", function(){
-            resetLabels([layer_CanoeDataRiverMiles_1]);
+            resetLabels([layer_EPAMileMarkers_3]);
         });
         map.on("layerremove", function(){
-            resetLabels([layer_CanoeDataRiverMiles_1]);
+            resetLabels([layer_EPAMileMarkers_3]);
         });
         </script>
     </body>
