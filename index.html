@@ -31,10 +31,20 @@
             background-color: rgba(255, 255, 255, 0.8); /* Optional: Add a semi-transparent background */
             padding: 10px; /* Add padding for aesthetics */
             font-size: 32px; /* Adjust font size */
-            font-family: Arial, sans-serif; /* Set font family */
+            font-family: 'EB Garamond'; /* Set font family */
             border-radius: 5px; /* Optional: Add rounded corners */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow for better visibility */
+            box-shadow: 0px 20px 20px rgba(0, 0, 0, 1); /* Optional: Add a shadow for better visibility */
         }
+        .css_CanoeDataRiverMiles_1 {
+            color: #000000;
+            font-size: 10pt;
+            font-family: 'MS Shell Dlg 2', sans-serif;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8); /* Optional: Add a semi-transparent background */;
+            border-radius: 5px; /* Optional: Add rounded corners */
+            padding: 0.1em;
+        }
+
         </style>
         <title>Cuyahoga River Miles</title>
     </head>
@@ -213,7 +223,7 @@
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['RiverMile'] !== null?String('<div style="color: #000000; font-size: 10pt; font-family: \'MS Shell Dlg 2\', sans-serif; text-align: center; background-color: white; padding: 0.1em">' + layer.feature.properties['RiverMile']) + '</div>':''), {permanent: true, offset: [0, 0], direction: 'center', className: 'css_CanoeDataRiverMiles_1'});
+            layer.bindTooltip((layer.feature.properties['RiverMile'] !== null?String('<div>' + layer.feature.properties['RiverMile'] + '</div>'):''), {permanent: true, offset: [0, 0], direction: 'center', className: 'css_CanoeDataRiverMiles_1'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
